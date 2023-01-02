@@ -10,39 +10,27 @@ const [firstLine, data] = require('fs')
   .replace(/\r/g, '')
   .split('\n');
 
-const baggage = firstLine.split(" ")[0];
-const size = firstLine.split(" ")[1];
-var weighList = data.split(" ").map(i=>parseInt(i));
-
-function deleteItem(item){
-    for(var i =0; i<weighList.length; i++){
-      if(weighList[i]===item){
-          return weighList.splice(i,1);
-      }
-    }
-  }
+const baggage = firstLine.split(" ").map(i=>parseInt(i))[0];
+const size = firstLine.split(" ").map(i=>parseInt(i))[1];
 
 if(baggage===0)
 return console.log(0);
 
-var minimum = Math.min.apply(null,weighList);
-var maximum = Math.max.apply(null,weighList);
+var weighList = data.split(" ").map(i=>parseInt(i));
 
+
+
+
+var box =0;
 var packaged = 0;
+for(const i of weighList){
 
-while(weighList.length>2){
-    if((maximum+minimum)>size){
-        return console.log(weighList.length);
+    box+=i;
+    if(box>size){
+        packaged++;
+        box=i;
     }
-    
-    
-    
-    deleteItem(maximum);
-    deleteItem(minimum);
-    
-    packaged++;
-    
+
 }
-    return console.log((weighList.length)+packaged);
 
-
+return console.log(packaged+1);
