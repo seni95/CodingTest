@@ -34,3 +34,6 @@ for(const i of weighList){
 }
 
 return console.log(packaged+1);
+
+
+
