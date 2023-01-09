@@ -8,18 +8,16 @@ const [firstLine, secondLine] = require('fs')
   .toString()
   .trim()
   .replace(/\r/g, '')
-  .split('\n');
-
+  .split('\n').map(BigInt);
 
  
 const barList = secondLine.split(" ").map(i=>Number(i));
 
-const arranged = barList.sort((a,b)=>a-b);
 var result = 0;
-while(arranged.length>0){
-    const process1 = arranged.shift();
+while(barList.length>0){
+    const process1 = barList.shift();
     var process2 = 0;
-    arranged.map(i=>process2+=i);
+    barList.map(i=>process2+=i);
     result+=(process1*process2);
 }
-return console.log(result);
+return console.log(result+"\n");
