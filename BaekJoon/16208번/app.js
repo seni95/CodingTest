@@ -8,16 +8,15 @@ const [firstLine, secondLine] = require('fs')
   .toString()
   .trim()
   .replace(/\r/g, '')
-  .split('\n').map(BigInt);
+  .split('\n');
 
  
-const barList = secondLine.split(" ").map(i=>Number(i));
-
+var barList = secondLine.split(" ").map(i=>Number(i));
+var arranged = barList.sort((a,b)=>a-b);
+var total = arranged.reduce((sum,currentValue)=>sum+currentValue);
 var result = 0;
-while(barList.length>0){
-    const process1 = barList.shift();
-    var process2 = 0;
-    barList.map(i=>process2+=i);
-    result+=(process1*process2);
+for(const num of arranged){
+  result+=num*(total-num);
+  total-=num;
 }
 return console.log(result+"\n");
