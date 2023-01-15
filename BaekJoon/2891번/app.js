@@ -31,3 +31,5 @@ for (var i=0; i<afford.length; i++){
     }
 }
 return console.log(damaged.length);
+
+//시발 존나 오래걸렸다.
