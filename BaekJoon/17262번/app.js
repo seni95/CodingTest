@@ -19,6 +19,8 @@ if(result>=0){
 return console.log(0);
 }
 return console.log(-result);
+
+
 // const stayTime = [];
 // for(var i=0; i<times.length; i++){
 //     const st = times[i][0];
